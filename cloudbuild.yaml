@@ -9,7 +9,7 @@ steps:
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: sh
-  args: ['-c', 'docker push -t us.gcr.io/apibin/apibin']
+  args: ['-c', 'docker push us.gcr.io/apibin/apibin']
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['beta', 'run', 'deploy', 'apibin', '--image', 'us.gcr.io/apibin/apibin:latest', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
