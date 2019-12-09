@@ -1,7 +1,7 @@
 steps:
 
 - name: 'alpine'
-  args: ['sh', '-c', 'date -u +%Y%m%d%T%H%M%S > /workspace/_TAG']
+  args: ['sh', '-c', 'date -u +%Y%m%dT%H%M%S > /workspace/_TAG']
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: sh
