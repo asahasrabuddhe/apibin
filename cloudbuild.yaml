@@ -8,6 +8,6 @@ steps:
   args: ['-c', 'docker build -t us.gcr.io/apibin/apibin:$(cat /workspace/_TAG) -t us.gcr.io/apibin/apibin:latest .']
 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['beta', 'run', 'deploy', 'apibin', '--image', 'gcr.io/apibin/apibin', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
+  args: ['beta', 'run', 'deploy', 'apibin', '--image', 'us.gcr.io/apibin/apibin', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 
 images: ['us.gcr.io/apibin/apibin']
