@@ -3,7 +3,7 @@ steps:
 - name: 'alpine'
   args: ['sh', '-c', 'date -u +%Y%m%d%T%H%M%S > /workspace/_TAG']
 
-- name: 'gcr.io/cloudbuilders/docker'
+- name: 'gcr.io/cloud-builders/docker'
   entrypoint: sh
   args: ['-c', 'docker build -t us.gcr.io/apibin/apibin:$(cat /workspace/_TAG) -t us.gcr.io/apibin/apibin:latest .']
 
