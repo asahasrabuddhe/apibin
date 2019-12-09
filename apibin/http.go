@@ -25,26 +25,26 @@ func httpMethods() http.Handler {
 }
 
 func getHandler(w http.ResponseWriter, r *http.Request) {
-	_ = render.Render(w, r, newResponse())
+	_ = render.Render(w, r, newHttpMethodResponse())
 }
 
 func postHandler(w http.ResponseWriter, r *http.Request) {
-	_ = render.Render(w, r, newResponse())
+	_ = render.Render(w, r, newHttpMethodResponse())
 }
 
 func putHandler(w http.ResponseWriter, r *http.Request) {
-	_ = render.Render(w, r, newResponse())
+	_ = render.Render(w, r, newHttpMethodResponse())
 }
 
 func patchHandler(w http.ResponseWriter, r *http.Request) {
-	_ = render.Render(w, r, newResponse())
+	_ = render.Render(w, r, newHttpMethodResponse())
 }
 
 func deleteHandler(w http.ResponseWriter, r *http.Request) {
-	_ = render.Render(w, r, newResponse())
+	_ = render.Render(w, r, newHttpMethodResponse())
 }
 
-type response struct {
+type httpMethodResponse struct {
 	Arguments map[string]string      `json:"args,omitempty"`
 	Data      string                 `json:"data,omitempty"`
 	Files     map[string][]*file     `json:"files,omitempty"`
@@ -60,8 +60,8 @@ type file struct {
 	Content string
 }
 
-func newResponse() *response {
-	return &response{
+func newHttpMethodResponse() *httpMethodResponse {
+	return &httpMethodResponse{
 		Arguments: make(map[string]string),
 		Files:     make(map[string][]*file),
 		Form:      make(map[string]string),
@@ -70,11 +70,11 @@ func newResponse() *response {
 	}
 }
 
-func (res *response) Bind(r *http.Request) error {
+func (res *httpMethodResponse) Bind(r *http.Request) error {
 	panic("implement me")
 }
 
-func (res *response) Render(w http.ResponseWriter, r *http.Request) error {
+func (res *httpMethodResponse) Render(w http.ResponseWriter, r *http.Request) error {
 	for key := range r.URL.Query() {
 		res.Arguments[key] = r.URL.Query().Get(key)
 	}
