@@ -25,6 +25,8 @@ func statusCodeHandler(w http.ResponseWriter, r *http.Request) {
 		if code >= 100 && code < 600 {
 			w.WriteHeader(code)
 		}
+
+		return
 	}
 
 	w.WriteHeader(http.StatusBadRequest)
