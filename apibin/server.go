@@ -27,6 +27,7 @@ func Serve(hostname string, port int) error {
 	})
 
 	r.Mount("/methods", httpMethods())
+	r.Mount("/status", statusCodes())
 
 	return http.ListenAndServe(fmt.Sprintf("%s:%d", hostname, port), r)
 }
